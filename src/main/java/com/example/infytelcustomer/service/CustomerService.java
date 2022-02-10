@@ -18,7 +18,7 @@ public class CustomerService {
 	
 	@Autowired
 	private CustomerRepository customerrepository;
-	
+	@Autowired
 	private ModelMapper modelMapper; 
 	
 	public List<CustomerDTO> getallCustomers(){
@@ -56,9 +56,24 @@ public class CustomerService {
 			cus.setEmail("haha@gmail.com");
 		}
 		
-		return modelMapper.map(c,CustomerDTO.class);
+		return modelMapper.map(cus,CustomerDTO.class);
 		}
 	
+	
+	
+	public CustomerDTO createCustomer(CustomerDTO customerdto) {
+		
+		Customer customer=modelMapper.map(customerdto,Customer.class);
+		System.out.println(customer);
+		
+		Customer customersave=customerrepository.saveAndFlush(customer);
+		
+		return modelMapper.map(customersave,CustomerDTO.class);
+		
+		
+		
+		
+	}
 	
 
 }

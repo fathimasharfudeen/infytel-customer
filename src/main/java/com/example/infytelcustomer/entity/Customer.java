@@ -35,5 +35,9 @@ public class Customer {
 	private String name;
 	private String email;
 	private String plan;
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", email=" + email + ", plan=" + plan + "]";
+	}
 
 }
